@@ -4,8 +4,8 @@
 
 > Alipay
 
-![github](https://github.com/sleepy-zeo/BrokenLineChart/blob/master/screenshots/Alipay.jpg)
+![alipay](https://github.com/sleepy-zeo/BrokenLineChart/blob/master/screenshots/Alipay.jpg)
 
 > BrokenChartLine
 
-![github](https://github.com/sleepy-zeo/BrokenLineChart/blob/master/screenshots/BrokenLineChart.jpg)
+![brokenChartLine](https://github.com/sleepy-zeo/BrokenLineChart/blob/master/screenshots/BrokenLineChart.jpg)
