@@ -73,6 +73,7 @@ public class LineChart extends View {
     private static final int DEFAULT_LEVEL_NUMBER = 5;
     private static final float DEFAULT_MAX_VALUE = 500f;
     private static final float DEFAULT_MIN_VALUE = 200f;
+    private static final float DEFAULT_VALUE_GAP = 30f;
     private static final float DEFAULT_TEXT_SIZE = 12f; // sp
     private static final float DEFAULT_LEVEL_LINE_WIDTH = 4;
     private static final float DEFAULT_BOTTOM_LINE_WIDTH = 4;
@@ -335,7 +336,7 @@ public class LineChart extends View {
     }
 
     private void drawBackground(Canvas canvas) {
-        if (mPoints.isEmpty()) {
+        if (mPoints.isEmpty() || mPoints.size() == 1) {
             return;
         }
 
@@ -482,32 +483,42 @@ public class LineChart extends View {
         return true;
     }
 
-    // for 1.x 2.x 3.x 4.x, set max to 4+1
     private float getMaxData() {
-        int max = Integer.MIN_VALUE;
+        if (getMinData_() == getMaxData_()) {
+            return getMinData_() + DEFAULT_VALUE_GAP;
+        }
+        return getMaxData_();
+    }
+
+    private float getMinData() {
+        if (getMinData_() == getMaxData_()) {
+            return getMinData_() - DEFAULT_VALUE_GAP;
+        }
+        return getMinData_();
+    }
+
+    // for 1.x 2.x 3.x 4.x, set max to 4+1
+    private float getMaxData_() {
+        float max = Integer.MIN_VALUE;
         for (int i = 0; i < mData.size(); i++) {
-            max = (int) Math.max(max, mData.get(i).value);
+            max = Math.max(max, mData.get(i).value);
         }
         if (max == Integer.MIN_VALUE) {
-            max = (int) DEFAULT_MAX_VALUE;
-        } else {
-            max = max + 1;
+            return DEFAULT_MAX_VALUE;
         }
-        return max;
+        return (float) Math.ceil(max);
     }
 
     // for 1.x 2.x 3.x 4.x, set min to 1
-    private float getMinData() {
-        int min = Integer.MAX_VALUE;
+    private float getMinData_() {
+        float min = Integer.MAX_VALUE;
         for (int i = 0; i < mData.size(); i++) {
-            min = (int) Math.min(min, mData.get(i).value);
+            min = Math.min(min, mData.get(i).value);
         }
         if (min == Integer.MAX_VALUE) {
-            min = (int) DEFAULT_MIN_VALUE;
-        } else if (min < 0) {
-            min = min - 1;
+            return DEFAULT_MIN_VALUE;
         }
-        return min;
+        return (float) Math.floor(min);
     }
 
     private void countRoundPoint(float x) {
