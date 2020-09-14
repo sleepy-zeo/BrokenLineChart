@@ -504,6 +504,8 @@ public class LineChart extends View {
         }
         if (min == Integer.MAX_VALUE) {
             min = (int) DEFAULT_MIN_VALUE;
+        } else if (min < 0) {
+            min = min - 1;
         }
         return min;
     }
