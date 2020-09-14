@@ -73,7 +73,7 @@ public class LineChart extends View {
     private static final int DEFAULT_LEVEL_NUMBER = 5;
     private static final float DEFAULT_MAX_VALUE = 500f;
     private static final float DEFAULT_MIN_VALUE = 200f;
-    private static final float DEFAULT_TEXT_SIZE = 14f; // sp
+    private static final float DEFAULT_TEXT_SIZE = 12f; // sp
     private static final float DEFAULT_LEVEL_LINE_WIDTH = 4;
     private static final float DEFAULT_BOTTOM_LINE_WIDTH = 4;
     private static final float DEFAULT_BROKEN_LINE_WIDTH = 5;
