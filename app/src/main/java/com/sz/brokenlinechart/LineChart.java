@@ -484,11 +484,11 @@ public class LineChart extends View {
 
     // for 1.x 2.x 3.x 4.x, set max to 4+1
     private float getMaxData() {
-        int max = 0;
+        int max = Integer.MIN_VALUE;
         for (int i = 0; i < mData.size(); i++) {
             max = (int) Math.max(max, mData.get(i).value);
         }
-        if (max == 0) {
+        if (max == Integer.MIN_VALUE) {
             max = (int) DEFAULT_MAX_VALUE;
         } else {
             max = max + 1;
@@ -498,11 +498,11 @@ public class LineChart extends View {
 
     // for 1.x 2.x 3.x 4.x, set min to 1
     private float getMinData() {
-        int min = 10000;
+        int min = Integer.MAX_VALUE;
         for (int i = 0; i < mData.size(); i++) {
             min = (int) Math.min(min, mData.get(i).value);
         }
-        if (min == 10000) {
+        if (min == Integer.MAX_VALUE) {
             min = (int) DEFAULT_MIN_VALUE;
         }
         return min;
